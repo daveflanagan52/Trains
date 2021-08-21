@@ -6,36 +6,34 @@ import Row from '../../Components/Row';
 import Column from '../../Components/Column';
 import FormInput, { FormInputType } from '../../Components/FormInput';
 import InputGroup from '../../Components/InputGroup';
-import { Train, Station } from '../../Types';
-import TrainCard from '../../Components/TrainCard';
 import InputGroupIcon from '../../Components/InputGroupIcon';
+import StationCard from '../../Components/StationCard';
+import { Station } from '../../Types';
 
-interface TrainsProps {
-  trains: Train[],
+interface StationsProps {
   stations: Station[],
   showOnlyPassenger: boolean,
 }
 
-const Trains: React.FC<TrainsProps> = (props) => {
-  const [search, setSearch] = useState('')
-  const passengerTrains = ['Long-distance', 'Commuter'];
-  const showTrains = (props.trains || [])
-    .filter(train => !props.showOnlyPassenger || passengerTrains.includes(train.trainCategory))
-    .filter(train => search.length === 0 || `${train.commuterLineID || train.trainType}${train.trainNumber}`.toLowerCase().includes(search.toLowerCase()));
+const Stations: React.FC<StationsProps> = (props) => {
+  const [search, setSearch] = useState('');
+  const showStations = (props.stations || [])
+    .filter(station => !props.showOnlyPassenger || station.passengerTraffic)
+    .filter(station => search.length === 0 || station.stationName.toLowerCase().includes(search.toLowerCase()));
   return (
     <>
       <Helmet>
-        <title>Junat | Junat</title>
+        <title>Junat | Asemat</title>
       </Helmet>
       <InputGroup className="mb-3">
         <InputGroupIcon icon={faFilter} className="bg-primary text-white" />
         <FormInput onChange={e => setSearch(e.target.value)} type={FormInputType.Text} name='search' id='search' value={search} placeHolder='Hae...' />
       </InputGroup>
       <Row>
-        {showTrains.map(train => <Column md={4} key={train.trainNumber}><TrainCard stations={props.stations} train={train} /></Column>)}
+        {showStations.map(station => <Column md={4} key={station.stationShortCode}><StationCard station={station} /></Column>)}
       </Row>
     </>
   );
 };
 
-export default Trains;
+export default Stations;

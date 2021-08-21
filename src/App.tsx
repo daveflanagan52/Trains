@@ -15,6 +15,7 @@ import Privacy from './Views/Privacy';
 import NotFound from './Views/NotFound';
 import Trains from './Views/Trains';
 import Train from './Views/Train';
+import Stations from './Views/Stations';
 
 import { useGetDetailedCauseCategoryCodesQuery, useGetLiveTrainsQuery, useGetStationsQuery } from './Services/Data';
 
@@ -43,6 +44,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/train/:id">
             <Train delayCauses={delayCauses.data || []} trains={trains.data || []} stations={stations.data || []} />
+          </Route>
+          <Route path="/stations">
+            <Stations showOnlyPassenger={showOnlyPassenger} stations={stations.data || []} />
           </Route>
           <Route path="*">
             <NotFound />
