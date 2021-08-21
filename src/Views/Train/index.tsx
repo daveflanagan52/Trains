@@ -8,7 +8,7 @@ import L, { LatLngTuple } from 'leaflet';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 import { useParams } from 'react-router';
-import { Train, Station, DelayCode } from '../../Types';
+import { ITrain, IStation, IDelayCode } from '../../Types';
 import Card from '../../Components/Card';
 import { useGetTrainLocationQuery } from '../../Services/Data';
 import Alert, { AlertType } from '../../Components/Alert';
@@ -21,28 +21,27 @@ const trainIcon = new L.Icon({
   iconSize: [32, 37],
 });
 
-interface TrainsProps {
-  delayCauses: DelayCode[],
-  trains: Train[],
-  stations: Station[],
+interface TrainProps {
+  delayCauses: IDelayCode[],
+  trains: ITrain[],
+  stations: IStation[],
 }
 
 interface FollowCenterProps {
   center: LatLngTuple,
-  zoom: number,
 }
 
 interface TrainParams {
   id: string,
 }
 
-const FollowCenter: React.FC<FollowCenterProps> = ({ center, zoom }) => {
+const FollowCenter: React.FC<FollowCenterProps> = ({ center }) => {
   const map = useMap();
-  map.setView(center, zoom);
+  map.setView(center, map.getZoom());
   return null;
 };
 
-const Trains: React.FC<TrainsProps> = ({ trains, stations, delayCauses }) => {
+const Train: React.FC<TrainProps> = ({ trains, stations, delayCauses }) => {
   const { id } = useParams<TrainParams>();
   const train = (trains || []).find((train) => train.trainNumber === parseInt(id));
   const now = moment();
@@ -53,7 +52,7 @@ const Trains: React.FC<TrainsProps> = ({ trains, stations, delayCauses }) => {
   return (
     <>
       <Helmet>
-        <title>Junat | Juna</title>
+        <title>Junat | {train?.commuterLineID || train?.trainType || ""}{train?.trainNumber.toString() || ""}</title>
       </Helmet>
       <h2 className="mb-3">
         {train?.commuterLineID || train?.trainType || ''}
@@ -62,7 +61,7 @@ const Trains: React.FC<TrainsProps> = ({ trains, stations, delayCauses }) => {
       {location?.data && location?.data.length > 0 && (
         <Card className="mb-4" bodyClassName="p-0">
           <MapContainer style={{ height: '400px' }} center={[loc[1], loc[0]]} zoom={13} scrollWheelZoom={false}>
-            <FollowCenter center={[loc[1], loc[0]]} zoom={13} />
+            <FollowCenter center={[loc[1], loc[0]]} />
             <TileLayer
               maxZoom={20}
               attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -91,7 +90,7 @@ const Trains: React.FC<TrainsProps> = ({ trains, stations, delayCauses }) => {
                   {row.type === 'DEPARTURE' ? 'Lähtee: ' : 'Saapuu: '}
                   {(stations || []).find((station) => station.stationShortCode === row.stationShortCode)?.stationName || 'Unknown'}
                   <span className="text-muted ms-auto">
-                    Raide
+                    Raide&nbsp;
                     {row.commercialTrack}
                   </span>
                 </div>
@@ -108,4 +107,4 @@ const Trains: React.FC<TrainsProps> = ({ trains, stations, delayCauses }) => {
   );
 };
 
-export default Trains;
+export default Train;

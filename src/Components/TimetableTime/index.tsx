@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import moment from 'moment';
 
-import { TimetableRow } from '../../Types';
+import { ITimetableRow } from '../../Types';
 
 interface TimetableTimeProps {
-  row?: TimetableRow,
+  row?: ITimetableRow,
 }
 
 const TimetableTime: React.FC<TimetableTimeProps> = ({ row }: TimetableTimeProps) => {

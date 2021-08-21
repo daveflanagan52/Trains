@@ -6,13 +6,13 @@ import Row from '../../Components/Row';
 import Column from '../../Components/Column';
 import FormInput, { FormInputType } from '../../Components/FormInput';
 import InputGroup from '../../Components/InputGroup';
-import { Train, Station } from '../../Types';
+import { ITrain, IStation } from '../../Types';
 import TrainCard from '../../Components/TrainCard';
 import InputGroupIcon from '../../Components/InputGroupIcon';
 
 interface TrainsProps {
-  trains: Train[],
-  stations: Station[],
+  trains: ITrain[],
+  stations: IStation[],
   showOnlyPassenger: boolean,
 }
 

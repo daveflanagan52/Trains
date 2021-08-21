@@ -1,11 +1,11 @@
-interface Train {
+interface ITrain {
   cancelled: boolean,
   commuterLineID: string,
   departureDate: Date,
   operatorShortCode: string,
   operatorUICCode: number,
   runningCurrently: boolean,
-  timeTableRows: TimetableRow[],
+  timeTableRows: ITimetableRow[],
   timetableAcceptanceDate: Date,
   timetableType: string,
   trainCategory: string,
@@ -13,34 +13,34 @@ interface Train {
   trainType: string,
 }
 
-interface Location {
+interface ILocation {
   type: 'Point',
   coordinates: number[],
   speed: number,
 }
 
-interface PassengerTerm {
+interface IPassengerTerm {
   fi: string;
   en: string;
   sv: string;
 }
 
-interface DelayCode {
+interface IDelayCode {
   id: number;
   detailedCategoryCode: string;
   detailedCategoryName: string;
   validFrom: Date;
-  passengerTerm: PassengerTerm;
+  passengerTerm: IPassengerTerm;
 }
 
-interface TranLocation {
+interface ITranLocation {
   trainNumber: number,
   departureDate: Date,
   timestamp: Date
-  location: Location,
+  location: ILocation,
 }
 
-interface Delay {
+interface IDelay {
   categoryCode: string;
   detailedCategoryCode: string;
   thirdCategoryCode: string;
@@ -49,10 +49,10 @@ interface Delay {
   thirdCategoryCodeId: string;
 }
 
-interface TimetableRow {
+interface ITimetableRow {
   actualTime?: Date,
   cancelled: boolean,
-  causes?: Delay[],
+  causes?: IDelay[],
   commercialStop?: boolean,
   commercialTrack?: string,
   countryCode?: string,
@@ -65,7 +65,7 @@ interface TimetableRow {
   type: 'DEPARTURE' | 'ARRIVAL',
 }
 
-interface Station {
+interface IStation {
   countryCode: string,
   latitude: number,
   longitude: number,
@@ -77,5 +77,5 @@ interface Station {
 }
 
 export type {
-  Train, TranLocation, TimetableRow, Station, DelayCode,
+  ITrain, ITranLocation, ITimetableRow, IStation, IDelayCode,
 };

@@ -8,10 +8,10 @@ import FormInput, { FormInputType } from '../../Components/FormInput';
 import InputGroup from '../../Components/InputGroup';
 import InputGroupIcon from '../../Components/InputGroupIcon';
 import StationCard from '../../Components/StationCard';
-import { Station } from '../../Types';
+import { IStation } from '../../Types';
 
 interface StationsProps {
-  stations: Station[],
+  stations: IStation[],
   showOnlyPassenger: boolean,
 }
 

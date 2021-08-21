@@ -1,22 +1,22 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
-  Train, TranLocation, Station, DelayCode,
+  ITrain, ITranLocation, IStation, IDelayCode,
 } from '../Types';
 
 export const dataApi = createApi({
   reducerPath: 'dataApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://rata.digitraffic.fi/api/v1/' }),
   endpoints: (builder) => ({
-    getLiveTrains: builder.query<Train[], undefined>({
+    getLiveTrains: builder.query<ITrain[], undefined>({
       query: () => 'live-trains',
     }),
-    getTrainLocation: builder.query<TranLocation[], string>({
+    getTrainLocation: builder.query<ITranLocation[], string>({
       query: (id) => `train-locations/latest/${id}`,
     }),
-    getStations: builder.query<Station[], undefined>({
+    getStations: builder.query<IStation[], undefined>({
       query: () => 'metadata/stations',
     }),
-    getDetailedCauseCategoryCodes: builder.query<DelayCode[], undefined>({
+    getDetailedCauseCategoryCodes: builder.query<IDelayCode[], undefined>({
       query: () => 'metadata/detailed-cause-category-codes',
     }),
   }),

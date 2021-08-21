@@ -1,16 +1,16 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../Card';
-import { Train, Station } from '../../Types';
+import { ITrain, IStation } from '../../Types';
 import TimetableTime from '../TimetableTime';
 
 interface TrainCardProps {
-  train?: Train,
-  stations: Station[],
+  train?: ITrain,
+  stations: IStation[],
 }
 
 const TrainCard: React.FC<TrainCardProps> = ({ train, stations }: TrainCardProps) => (
-  <Link to={`/train/${train?.trainNumber}`}>
+  <Link to={`/trains/${train?.trainNumber}`}>
     <Card bodyClassName="p-2" className="mb-4">
       <div className="d-flex align-items-center">
         <div className="badge bg-primary me-2">

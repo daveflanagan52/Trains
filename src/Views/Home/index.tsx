@@ -8,14 +8,13 @@ import Column from '../../Components/Column';
 import Button, { ButtonType } from '../../Components/Button';
 import FormLabel from '../../Components/FormLabel';
 import FormInput, { FormInputType } from '../../Components/FormInput';
-import InputGroup from '../../Components/InputGroup';
-import { Train, Station } from '../../Types';
+import { ITrain, IStation } from '../../Types';
 import TrainCard from '../../Components/TrainCard';
 import StationCard from '../../Components/StationCard';
 
 interface HomeProps {
-  trains: Train[],
-  stations: Station[],
+  trains: ITrain[],
+  stations: IStation[],
   showOnlyPassenger: boolean,
 }
 
