@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Train, TranLocation, Station, DelayCode } from '../Types';
+import {
+  Train, TranLocation, Station, DelayCode,
+} from '../Types';
 
 export const dataApi = createApi({
   reducerPath: 'dataApi',
@@ -9,7 +11,7 @@ export const dataApi = createApi({
       query: () => 'live-trains',
     }),
     getTrainLocation: builder.query<TranLocation[], string>({
-      query: (id) => 'train-locations/latest/' + id,
+      query: (id) => `train-locations/latest/${id}`,
     }),
     getStations: builder.query<Station[], undefined>({
       query: () => 'metadata/stations',

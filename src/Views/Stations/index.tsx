@@ -18,8 +18,7 @@ interface StationsProps {
 const Stations: React.FC<StationsProps> = (props) => {
   const [search, setSearch] = useState('');
   const showStations = (props.stations || [])
-    .filter(station => !props.showOnlyPassenger || station.passengerTraffic)
-    .filter(station => search.length === 0 || station.stationName.toLowerCase().includes(search.toLowerCase()));
+    .filter((station) => (!props.showOnlyPassenger || station.passengerTraffic) && (search.length === 0 || station.stationName.toLowerCase().includes(search.toLowerCase())));
   return (
     <>
       <Helmet>
@@ -27,10 +26,10 @@ const Stations: React.FC<StationsProps> = (props) => {
       </Helmet>
       <InputGroup className="mb-3">
         <InputGroupIcon icon={faFilter} className="bg-primary text-white" />
-        <FormInput onChange={e => setSearch(e.target.value)} type={FormInputType.Text} name='search' id='search' value={search} placeHolder='Hae...' />
+        <FormInput onChange={(e) => setSearch(e.target.value)} type={FormInputType.Text} name="search" id="search" value={search} placeHolder="Hae..." />
       </InputGroup>
       <Row>
-        {showStations.map(station => <Column md={4} key={station.stationShortCode}><StationCard station={station} /></Column>)}
+        {showStations.map((station) => <Column md={4} key={station.stationShortCode}><StationCard station={station} /></Column>)}
       </Row>
     </>
   );

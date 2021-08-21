@@ -14,7 +14,7 @@ interface Train {
 }
 
 interface Location {
-  type: "Point",
+  type: 'Point',
   coordinates: number[],
   speed: number,
 }
@@ -62,7 +62,7 @@ interface TimetableRow {
   stationShortCode: string,
   stationUICCode: number,
   trainStopping?: boolean,
-  type: "DEPARTURE" | "ARRIVAL",
+  type: 'DEPARTURE' | 'ARRIVAL',
 }
 
 interface Station {
@@ -70,10 +70,12 @@ interface Station {
   latitude: number,
   longitude: number,
   passengerTraffic: boolean,
-  stationName: string,  
+  stationName: string,
   stationShortCode: string,
   stationUICCode: number,
   type: 'STATION' | 'STOPPING_POINT' | 'TURNOUT_IN_THE_OPEN_LINE',
 }
 
-export type { Train, TranLocation, TimetableRow, Station, DelayCode };
+export type {
+  Train, TranLocation, TimetableRow, Station, DelayCode,
+};

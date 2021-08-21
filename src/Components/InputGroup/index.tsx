@@ -6,7 +6,7 @@ type InputGroupProps = {
 }
 
 const InputGroup: React.FC<InputGroupProps> = (props: InputGroupProps) => (
-  <div className={[props.className || "", "input-group"].join(' ')}>
+  <div className={[props.className || '', 'input-group'].join(' ')}>
     {props.children}
   </div>
 );

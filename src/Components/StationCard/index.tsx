@@ -12,10 +12,10 @@ const typeTranslations = {
   STATION: 'Asema',
   STOPPING_POINT: 'Pysähdyskohta',
   TURNOUT_IN_THE_OPEN_LINE: 'Haaralinja',
-}
+};
 
 const StationCard: React.FC<StationCardProps> = ({ station }: StationCardProps) => (
-  <Link to={'/station/' + station?.stationShortCode}>
+  <Link to={`/station/${station?.stationShortCode}`}>
     <Card bodyClassName="p-2" className="mb-4">
       <div className="d-flex align-items-center">
         <div className="badge bg-primary me-2">{station?.stationShortCode}</div>

@@ -13,13 +13,12 @@ const TimetableTime: React.FC<TimetableTimeProps> = ({ row }: TimetableTimeProps
   if (actualEstimate.isAfter(scheduled)) {
     return (
       <>
-        <span className='text-muted delay me-1'>{scheduled.format('HH:mm')}</span>
+        <span className="text-muted delay me-1">{scheduled.format('HH:mm')}</span>
         {actualEstimate.format('HH:mm')}
       </>
-    )
-  } else {
-    return <>{scheduled.format('HH:mm')}</>
+    );
   }
+  return <>{scheduled.format('HH:mm')}</>;
 };
 
 export default TimetableTime;

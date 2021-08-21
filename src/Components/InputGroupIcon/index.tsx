@@ -8,7 +8,7 @@ type InputGroupIconProps = {
 }
 
 const InputGroupIcon: React.FC<InputGroupIconProps> = (props: InputGroupIconProps) => (
-  <span className={[props.className || "", "input-group-text"].join(' ')}>
+  <span className={[props.className || '', 'input-group-text'].join(' ')}>
     <FontAwesomeIcon icon={props.icon} />
   </span>
 );

@@ -6,7 +6,7 @@ const Time: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(interval);
-  })
+  });
   return (
     <>{moment(time).format('HH:mm')}</>
   );

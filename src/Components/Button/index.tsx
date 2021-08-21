@@ -32,14 +32,14 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
     return (
       <Link to={props.link} className={['btn', props.type, props.small ? 'btn-sm' : '', props.stretched ? 'stretched-link' : '', props.className].join(' ')}>
         {props.icon && <FontAwesomeIcon icon={props.icon} />}
-        {props.text && ' ' + props.text}
+        {props.text && ` ${props.text}`}
       </Link>
     );
   }
   return (
     <button type={props.onClick ? 'button' : 'submit'} onClick={props.onClick} className={['btn', props.type, props.stretched ? 'stretched-link' : '', props.className].join(' ')}>
       {props.icon && <FontAwesomeIcon icon={props.icon} />}
-      {props.text && ' ' + props.text}
+      {props.text && ` ${props.text}`}
     </button>
   );
 };

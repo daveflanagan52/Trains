@@ -17,11 +17,10 @@ interface TrainsProps {
 }
 
 const Trains: React.FC<TrainsProps> = (props) => {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
   const passengerTrains = ['Long-distance', 'Commuter'];
   const showTrains = (props.trains || [])
-    .filter(train => !props.showOnlyPassenger || passengerTrains.includes(train.trainCategory))
-    .filter(train => search.length === 0 || `${train.commuterLineID || train.trainType}${train.trainNumber}`.toLowerCase().includes(search.toLowerCase()));
+    .filter((train) => (!props.showOnlyPassenger || passengerTrains.includes(train.trainCategory)) && (search.length === 0 || `${train.commuterLineID || train.trainType}${train.trainNumber}`.toLowerCase().includes(search.toLowerCase())));
   return (
     <>
       <Helmet>
@@ -29,10 +28,10 @@ const Trains: React.FC<TrainsProps> = (props) => {
       </Helmet>
       <InputGroup className="mb-3">
         <InputGroupIcon icon={faFilter} className="bg-primary text-white" />
-        <FormInput onChange={e => setSearch(e.target.value)} type={FormInputType.Text} name='search' id='search' value={search} placeHolder='Hae...' />
+        <FormInput onChange={(e) => setSearch(e.target.value)} type={FormInputType.Text} name="search" id="search" value={search} placeHolder="Hae..." />
       </InputGroup>
       <Row>
-        {showTrains.map(train => <Column md={4} key={train.trainNumber}><TrainCard stations={props.stations} train={train} /></Column>)}
+        {showTrains.map((train) => <Column md={4} key={train.trainNumber}><TrainCard stations={props.stations} train={train} /></Column>)}
       </Row>
     </>
   );
