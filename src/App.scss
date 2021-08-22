@@ -44,7 +44,7 @@ body {
   padding: 1rem;
   list-style: none;
   text-align: left;
-  margin-left: 8rem;
+  margin-left: 6.5rem;
   height: 100%;
 
   li {
@@ -179,7 +179,7 @@ header {
     .shape-waves {
       left: 0px;
       transform: rotate3d(0, 1, 0, 180deg);
-      height: 133px;
+      height: 50px;
       width: calc(159% + 1.3px);
 
       .shape-fill-1 {
@@ -209,6 +209,13 @@ a {
 }
 
 @include media-breakpoint-up(md) {
+  header {
+    .divider-shape {
+      .shape-waves {
+        height: 133px;
+      }
+    }
+  }
   .search {
     margin-top: -3rem;
   }
