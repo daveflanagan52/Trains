@@ -132,27 +132,6 @@ header {
     background-image: linear-gradient(-135deg, rgba($primary, 0.8) 25%, rgba($secondary, 0.8));
   }
 
-  a,
-  a:hover,
-  a:focus {
-    display: flex;
-    align-items: center;
-    border: 0;
-    background: none;
-    color: #fff;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2.5rem;
-    height: 51px;
-    line-height: 51px;
-    margin-bottom: 1rem;
-
-    img {
-      height: 51px;
-      margin-right: 10px;
-    }
-  }
-
   p {
     font-size: 1rem;
     font-weight: 300;
@@ -163,6 +142,13 @@ header {
     padding-bottom: 2rem;
     position: relative;
     z-index: 1;
+
+    .navbar-brand {
+      font-size: 3rem;
+      color: #fff;
+      padding: 0;
+      margin: 0;
+    }
   }
 
   .divider-shape {
