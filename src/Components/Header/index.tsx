@@ -1,12 +1,11 @@
 import { faTrain } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Column from '../Column';
 import Container from '../Container';
 import FormCheckSwitch from '../FormCheckSwitch';
 import Row from '../Row';
-import Time from '../Time';
 
 interface HeaderProps {
   numTrains: number,
@@ -29,47 +28,14 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <FontAwesomeIcon className="me-2 text-primary" icon={faTrain} />
           Junat
         </Link>
-        {!showWelcome && (
-          <Column md={6}>
-            <Row>
-              <Column className="text-md-center" md={6}>
-                <p className="mb-0">Aktiiviset Junat</p>
-                <h2>{props.numTrains}</h2>
-              </Column>
-              <Column className="text-md-center" md={6}>
-                <p className="mb-0">Nykyinen Aika</p>
-                <h2><Time /></h2>
-              </Column>
-            </Row>
-          </Column>
-        )}
         {showWelcome && (
-          <>
-            <h2 className="my-2">Tervetuloa</h2>
-            <Row>
-              <Column md={6}>
-                <p>
-                  Täältä voit katsoa jokaisen suomalaisen juna-aseman lähtevien sekä saapuvien junien aikataulun, tai nähdä kaikki rautatieverkostolla olevat aktiiviset junat.
-                  <br />
-                  Huomaa, että joillakin junilla on GPS pois käytöstä, joten emme pysty näyttämään sijaintia.
-                  <br />
-                  Tiedot päivitetään automaattisesti 15 sekunnin välein.
-                </p>
-              </Column>
-              <Column md={6}>
-                <Row>
-                  <Column md={6}>
-                    <p className="mb-0 text-center">Aktiiviset Junat</p>
-                    <h2 className="text-center">{props.numTrains}</h2>
-                  </Column>
-                  <Column md={6}>
-                    <p className="mb-0 text-center">Nykyinen Aika</p>
-                    <h2 className="text-center"><Time /></h2>
-                  </Column>
-                </Row>
-              </Column>
-            </Row>
-          </>
+          <Row>
+            <Column md={6}>
+              <p>Täältä voit katsoa jokaisen suomalaisen juna-aseman lähtevien sekä saapuvien junien aikataulun, tai nähdä kaikki rautatieverkostolla olevat aktiiviset junat.</p>
+              <p>Huomaa, että joillakin junilla on GPS pois käytöstä, joten emme pysty näyttämään sijaintia.</p>
+              <p>Tiedot päivitetään automaattisesti 15 sekunnin välein.</p>
+            </Column>
+          </Row>
         )}
         <FormCheckSwitch id="cargo" name="cargo" value onChange={() => props.setShowOnlyPassenger(!props.showOnlyPassenger)} checked={props.showOnlyPassenger} text="Näytä vain matkustajajunat" />
       </Container>
