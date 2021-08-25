@@ -25,28 +25,24 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         </svg>
       </div>
       <Container>
-        <Row className="g-0">
+        <Link to="/" className="navbar-brand">
+          <FontAwesomeIcon className="me-2 text-primary" icon={faTrain} />
+          Junat
+        </Link>
+        {!showWelcome && (
           <Column md={6}>
-            <Link to="/" className="navbar-brand">
-              <FontAwesomeIcon className="me-2 text-primary" icon={faTrain} />
-              Junat
-            </Link>
+            <Row>
+              <Column className="text-md-center" md={6}>
+                <p className="mb-0">Aktiiviset Junat</p>
+                <h2>{props.numTrains}</h2>
+              </Column>
+              <Column className="text-md-center" md={6}>
+                <p className="mb-0">Nykyinen Aika</p>
+                <h2><Time /></h2>
+              </Column>
+            </Row>
           </Column>
-          {!showWelcome && (
-            <Column md={6}>
-              <Row>
-                <Column className="text-md-center" md={6}>
-                  <p className="mb-0">Aktiiviset Junat</p>
-                  <h2>{props.numTrains}</h2>
-                </Column>
-                <Column className="text-md-center" md={6}>
-                  <p className="mb-0">Nykyinen Aika</p>
-                  <h2><Time /></h2>
-                </Column>
-              </Row>
-            </Column>
-          )}
-        </Row>
+        )}
         {showWelcome && (
           <>
             <h2 className="my-2">Tervetuloa</h2>
