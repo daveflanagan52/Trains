@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
+import moment from 'moment';
 
 import './App.scss';
 
@@ -57,7 +58,7 @@ const App: React.FC = () => {
           </Route>
         </Switch>
         <footer className=" d-flex">
-          &copy; Copyright 2021 Dave Flanagan
+          &copy; Copyright {moment().format('YYYY')} Dave Flanagan
           <Link className="ms-auto" to="/privacy">Tietosuojakäytäntö</Link>
         </footer>
       </Container>
